@@ -1,0 +1,9 @@
+#notif1{
+    border-style: outset;
+    height: 100px;
+    width: 200px;
+    border-radius: 30px;
+}
+#content{
+    margin-top: 100px;
+}

@@ -1,0 +1,30 @@
+body{
+  background-color:rgba(23, 38, 36, 0.934);
+}
+#all{
+  float: left;
+  margin-left:  760px;
+  margin-top: -632px;
+  width: 500px;
+  height: 600px;
+  padding: 12px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-style: solid;
+  box-shadow: 1px 3px 20px;
+  background-color:white;
+  overflow-y: scroll;
+  
+}
+#image{
+  float: left;
+  margin-left: 134px;
+  margin-top: 50px;
+}
+span{
+  margin-top: 20px;
+  text-align: center;
+  
+}
+#bouton input:hover{
+  background-color: rgb(58, 98, 93);
+}

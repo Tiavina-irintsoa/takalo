@@ -1,0 +1,11 @@
+a.nav-link{
+    color: white;
+}
+footer{
+    background-color:rgb(14, 78, 104);
+    height: 10vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
