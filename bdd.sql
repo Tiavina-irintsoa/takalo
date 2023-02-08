@@ -1,26 +1,25 @@
-
 create table LoginAdmin(
     idAdmin int primary key,
-    nom varchar(40),
-    motdepasse varchar(40)
+    nom varchar(40) not null,
+    motdepasse varchar(40) not null
 );
 
 create table category(
     idcategory int primary key auto_increment,
-    nom varchar(40)
+    nom varchar(40) not null
 );
 
 create table utilisateur(
     idutilisateur int primary key auto_increment,
     nom varchar(40),
-    motdepasse varchar(40)
+    motdepasse varchar(40) not null
 );
 create table objet(
     idobjet int primary key auto_increment,
     idcategory int,
     nom varchar(30),
     description varchar(40),
-    prix int,
+    prix double not null,
     idutilisateur int,
     foreign key (idcategory) references category(idcategory),
     foreign key (idutilisateur) references utilisateur(idutilisateur)
@@ -30,7 +29,6 @@ create table photo(
     idobjet int,
     nomphoto varchar(40),
     foreign key (idobjet) references objet(idobjet)
-
 );
 create table proposition(
     idProposition int primary key auto_increment,
@@ -38,11 +36,18 @@ create table proposition(
     idobjet1 int,
     idutilisateur2 int,
     idobjet2 int,
-    etat int,
+    etat int default 0,
     foreign key (idutilisateur1) references utilisateur(idutilisateur),
     foreign key (idutilisateur2) references utilisateur(idutilisateur),
     foreign key (idobjet1) references objet(idobjet),
     foreign key (idobjet2) references objet(idobjet)
+);
+create table historique (
+    idObjet integer primary key auto_increment,
+    idUtilisateur integer,
+    dateechange timestamp,
+    foreign key(idobjet) references objet(idobjet),
+    foreign key (idutilisateur) references utilisateur(idutilisateur)
 );
 
 insert into LoginAdmin values(1,'admin','admin1');
@@ -52,15 +57,6 @@ insert into category values(null,'Electronique');
 insert into category values(null,'Chaussure');
 insert into category values(null,'Decor');
 insert into category values(null,'Cuisine');
-
-create table historique (
-    idObjet integer primary key auto_increment,
-    idUtilisateur integer,
-    dateechange timestamp,
-    foreign key(idobjet) references objet(idobjet),
-    foreign key (idutilisateur) references utilisateur(idutilisateur)
-);
-
 
 
 insert into utilisateur values('','Rakoto','Rakoto12');
