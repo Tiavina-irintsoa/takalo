@@ -7,22 +7,19 @@ class Utilisateur extends SessionUtilisateur{
         $this->load->model("DetailModel");
         $data=array();
         $data["liste"]=$this->DetailModel->DetailObjets($this->input->get('id'));
-        $data["photo"]=$this->DetailModel->getPhoto($this->input->get('id'));
+        $data["photos"]=$this->DetailModel->getPhoto($this->input->get('id'));
         $data["page"]='DetailsObjet';
-        // $data["css"]="details.css";
-        $data['css']="";
+        $data["css"]="details.css";
         $data["titre"]="Detail Objet";
         $data['user']=$this->session->user;
         $data['isproposedbyme']=$this->DetailModel->isProposedByMe($data['user']['idutilisateur'],$this->input->get('id'),$data['liste']['idutilisateur']);
-        // var_dump($data);
         $this->load->view('Template2',$data);
     }
     public function disconnect(){
       $this->session->unset_userdata('user');
       redirect('Welcome/loginUtilisateur');
     }
-    public function Accepter(){
-      
+    public function Accepter(){ 
       $this->load->model("UtilisateurModel");
       $this->load->model("HistoriqueModel");
 
@@ -62,6 +59,7 @@ public function detailobjet(){
   $data["page"]="Detailsproposition";
   $data["css"]="detailsproposition.css";
    $data["titre"]="Detail proposition";
+
   //  var_dump($data);
   $this->load->view('Template2',$data);
 
