@@ -24,15 +24,27 @@ class Welcome extends CI_Controller{
     $data["submitvalue"]="se connecter";
     $this->load->view('Login',$data);
  }
-  public function inscriptionUlisateur(){
+ 
+     
+ public function insertUtilisateur(){
+  
+  $this->load->model("UtilisateurModel");
+  $this->UtilisateurModel->InscriptionUser($this->input->post('nom'),$this->input->post('mdp'));
+  echo $this->input->post('nom');
+  echo $this->input->post('mdp');
+  redirect("Welcome/inscriptionUtilisateur");
+
+}
+  public function inscriptionUtilisateur(){
     $data=array();
     $data["titre"]="Inscription utilisateur";
     $data["css"]="listeObjets";
-    $data["action"]=site_url("Utilisateur/insertUtilisateur");
-    $date["page"]="Login";
-    $date["submitvalue"]="s'inscrire";
-    $this->load->view('Template2',$data);  
+    $data["action"]=site_url("Welcome/insertUtilisateur");
+    $data["page"]="Login";
+    $data["submitvalue"]="s'inscrire";
+    $this->load->view('Login',$data);  
   }
+
   public function verifierUtilisateur(){
     $this->load->model("UtilisateurModel");
     $data["verif"]=$this->UtilisateurModel->verifierUtilisateur($this->input->post('nom'),$this->input->post('mdp'));

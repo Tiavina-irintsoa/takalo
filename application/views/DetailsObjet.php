@@ -60,6 +60,11 @@
                         </div>
                     </a> 
                     <?php } } ?>
+                    <a href="<?php echo site_url("Objet/historique").'?id='.$liste['idobjet'];?>">
+                        <div>
+                            Voir l'historique
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

@@ -5,11 +5,11 @@ require('SessionUtilisateur.php');
 class Upload extends SessionUtilisateur{
     public function do_upload()
         {
-        $config['upload_path']          = 'assets/img';
-        $config['allowed_types']        = 'gif|jpg|png|jpeg|jfif';
-        $config['max_size']             = 100000;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+            $config['upload_path']          = 'assets/img';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg|jfif';
+            $config['max_size']             = 10000000000;
+            $config['max_width']            = 5000;
+            $config['max_height']           = 5000;
 
         $this->load->library('upload', $config);
         // $nom=$this->post('');
@@ -39,9 +39,9 @@ class Upload extends SessionUtilisateur{
         {
         $config['upload_path']          = 'assets/img';
         $config['allowed_types']        = 'gif|jpg|png|jpeg|jfif';
-        $config['max_size']             = 100000;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['max_size']             = 10000000000;
+        $config['max_width']            = 5000;
+        $config['max_height']           = 5000;
 
         $this->load->library('upload', $config);
         // $nom=$this->post('');

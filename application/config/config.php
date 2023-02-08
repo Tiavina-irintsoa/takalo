@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/takalo-takalo-1840-1880-1795/';
+$config['base_url'] = 'http://sakila.infinityfreeapp.com/takalo-takalo-1840-1880-1795/';
 
 /*
 |--------------------------------------------------------------------------

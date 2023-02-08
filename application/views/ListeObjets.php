@@ -1,4 +1,12 @@
+<?php   
+        if(count($liste)==0){ ?>
+            <div id="default">
+                Aucun objet trouve
+            </div>
+    <?php    }
+    ?>
 <div id="content">
+    
     <?php
         foreach($liste as $objet){ ?>
             <div id="all">
@@ -21,6 +29,6 @@
                 <a id="link2" href="<?php echo site_url("ObjetPrix/getprixproche")?>?id=<?php echo $objet['idobjet']?>&pourcentage=20">+/-20%</a>
                 </div>
             </div>
-    <?php    }
+    <?php    } 
     ?>
 </div>

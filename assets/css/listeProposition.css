@@ -1,9 +1,46 @@
-#notif1{
-    border-style: outset;
-    height: 100px;
-    width: 200px;
-    border-radius: 30px;
+#notif{
+    background-color: #ffffff;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    width: 50vw;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+#title{
+    color: rgb(14, 78, 104);
+}
+a{
+    text-decoration: none;
+    color: black;
+    word-spacing: 2px;
+}
+a:hover{
+    color: black;
+}
+#username{
+    font-weight: bold;
+    padding: 1%;
+}
+body{
+    background-color: #f5f5f5;
 }
 #content{
-    margin-top: 100px;
+    min-height: 70vh;
+    margin-top: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+#default_message{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
 }

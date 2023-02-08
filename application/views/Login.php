@@ -31,10 +31,16 @@
                     <input type="submit" value="<?php echo $submitvalue; ?>">
                 </div>
             </form>
+            <?php if($titre=="Login utilisateur"){?>
             <a href="<?php echo site_url("Welcome/loginAdmin"); ?>">
                 Se connecter en tant qu'admin
             </a>
+
         </div>
+        <a href="<?php echo site_url("Welcome/inscriptionUtilisateur"); ?>">
+                S'inscrire
+            </a>
+            <?php } ?>
     </div>
     </div>
 </body>

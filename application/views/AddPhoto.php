@@ -15,7 +15,7 @@
                     <label for="">
                         Photo:
                     </label>
-                    <input type="file" name="userfile" size="2000" />
+                    <input type="file" name="userfile">
                 </div>
                 <div id="submit">
                     <input type="submit" value="Valider">

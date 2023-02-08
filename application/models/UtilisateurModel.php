@@ -107,9 +107,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $query=$this->db->query($sql);
         }
         public function InscriptionUser($nom,$mdp){
-            $sql="insert into utilisateur values (%s,%s)";
+            $sql="insert into utilisateur values (null,%s,%s)";
             $sql=sprintf($sql,$this->db->escape($nom),$this->db->escape($mdp));
-            $this->db->$query($sql);
+            $this->db->query($sql);
             }
         public function verifierUtilisateur($nom,$mdp){
             $sql="select * from utilisateur where nom = %s and motdepasse=%s";

@@ -13,13 +13,15 @@ class Utilisateur extends SessionUtilisateur{
         $data["titre"]="Detail Objet";
         $data['user']=$this->session->user;
         $data['isproposedbyme']=$this->DetailModel->isProposedByMe($data['user']['idutilisateur'],$this->input->get('id'),$data['liste']['idutilisateur']);
+        // var_dump($data);
         $this->load->view('Template2',$data);
     }
     public function disconnect(){
       $this->session->unset_userdata('user');
       redirect('Welcome/loginUtilisateur');
     }
-    public function Accepter(){ 
+    public function Accepter(){
+      
       $this->load->model("UtilisateurModel");
       $this->load->model("HistoriqueModel");
 
@@ -59,7 +61,6 @@ public function detailobjet(){
   $data["page"]="Detailsproposition";
   $data["css"]="detailsproposition.css";
    $data["titre"]="Detail proposition";
-
   //  var_dump($data);
   $this->load->view('Template2',$data);
 
@@ -110,25 +111,7 @@ public function detailobjet(){
         echo $owner;
         redirect("Utilisateur/details?id=".$idobjet2);
     }
-    public function inscriptionUtilisateur(){
-  
-      $data=array();
-      $data["titre"]="Inscription utilisateur";
-      $data["css"]="listeObjets";
-      $data["action"]=site_url("Utilisateur/insertUtilisateur");
-      $date["page"]="Login";
-      $data['titre']="Liste d'objets";
-      $date["submitvalue"]="s'inscrire";
-      $this->load->view('Template2',$data);
-    }
-    
-    public function insertUtilisateur(){
-  
-      $this->load->model("UtilisateurModel");
-      $this->UtilisateurModel->InscriptionUser($this->input->get('nom'),$this->input->get('mdp'));
-      redirect("Utilisateur/inscriptionUtilisateur");
-  
-    }
+
   
     public function login(){
   
@@ -177,7 +160,6 @@ public function detailobjet(){
       $data["liste"]=$this->UtilisateurModel->getObjects($user['idutilisateur']);
       $data["page"]="ListeObjets";
       $data['css']="listeObjets.css";
-      $data['titre']="Liste d'objets";
       $this->load->view('Template2',$data);
     }
     public function getAllObjetUser(){
@@ -187,7 +169,6 @@ public function detailobjet(){
         $data['css']='listeObjets.css';
         $data["liste"]=$this->ObjetModel->getObjects($user['idutilisateur']);
         $data["page"]="ListeObjets";
-        $data['titre']="Liste d'objets";
         $this->load->view('Template2',$data);
     }
       
