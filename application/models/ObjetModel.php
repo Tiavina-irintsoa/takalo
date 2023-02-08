@@ -1,22 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
     class ObjetModel extends CI_Model{
-        public function getObjects(){
-            $sql="select objet.*,photo.nomphoto from objet join photo on photo.idobjet=objet.idobjet";
+        public function getObjects($user){
+            $sql="select objet.*from objet where idutilisateur != %s";
+            $sql=sprintf($sql,$this->db->escape($user));
             $query=$this->db->query($sql);
             $result=array();
             foreach($query->result_array() as $row){
+                $row['nomphoto']=$this->getPhotoCouverture($row['idobjet']);
                 array_push($result,$row);
             }
             return $result;
         }
+        public function getPhotoCouverture($id){
+            $sql="select * from photo where idobjet=%s limit 1";
+            $sql=sprintf($sql,$this->db->escape($id));
+            $query=$this->db->query($sql);
+            $row= $query->row_array();
+            return $row['nomphoto'];
+        }   
         public function DeleteObjet($id){
             $sql="delete from objet where idobjet=%s";
             $sql=sprintf($sql,$this->db->escape($id));
             $this->db->query($sql);
         }
         public function getObjetbyId($id){
-            $sql="select * from objet where id=%s";
+            $sql="select * from objet where idobjet=%s";
             $sql=sprintf($sql,$this->db->escape($id));
             $query=$this->db->query($sql);
             $result=$query->row_array();

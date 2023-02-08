@@ -32,17 +32,20 @@ class Admin extends SessionAdmin{
     $data['page']="FormulaireCategory";
     $this->load->view('Template',$data);
   }
-
+  
   public function insertcategory(){
     $nom=$this->input->post('nom');
     if(strlen($nom)==0){
       redirect("Admin/insertCateg?erreur=Nominvalide&nom=".$nom);
     }
     $this->load->model("CategoryModel");
-    $this->CategoryModel->Insertcategory();
+    $this->CategoryModel->Insertcategory($nom);
     redirect("Admin/insertCateg");
   }
-  
+    public function disconnect(){
+      $this->session->unset_userdata('admin');
+      redirect('Welcome/loginUtilisateur');
+    }
   public function updatecateg(){
     $data=array();
     $this->load->model("CategoryModel");

@@ -14,7 +14,8 @@ class Utilisateur extends SessionUtilisateur{
         $data["titre"]="Detail Objet";
         $data['user']=$this->session->user;
         $data['isproposedbyme']=$this->DetailModel->isProposedByMe($data['user']['idutilisateur'],$this->input->get('id'),$data['liste']['idutilisateur']);
-        $this->load->view('Template2',$data);
+        var_dump($data);
+        // $this->load->view('Template2',$data);
     }
     public function disconnect(){
       $this->session->unset_userdata('user');
@@ -23,6 +24,7 @@ class Utilisateur extends SessionUtilisateur{
     public function Accepter(){
       
       $this->load->model("UtilisateurModel");
+      $this->UtilisateurModel->echange($data["liste"]["idutilisateur1"],$data["liste"]["idobjet1"],$data["liste"]["idutilisateur2"],$data["liste"]["idobjet2"]);
       $data=array();
       $this->UtilisateurModel->Accepter($this->input->get('id'));
       redirect("Utilisateur/getProposition");
@@ -38,12 +40,17 @@ class Utilisateur extends SessionUtilisateur{
 }
 
 public function echange(){
-
   $this->load->model("UtilisateurModel");
+  $this->load->model("HistoriqueModel");
+  $utilisateur1=$this->input->get('idutilisateur1');
+  $utilisateur2=$this->input->get('idutilisateur2');
+  $objet1=$this->input->get('idobjet1');
+  $objet2=$this->input->get('idobjet2');
+  $this->HistoriqueModel->insertHistorique($objet1,$utilisateur1);
+  $this->HistoriqueModel->insertHistorique($objet2,$utilisateur2);
   $data=array();
-  $this->UtilisateurModel->echange($this->input->get('idutilisateur1'),$this->input->get('idobjet1'),$this->input->get('idutilisateur2'),$this->input->get('idobjet2'));
+  $this->UtilisateurModel->echange($utilisateur1,$objet1,$utilisateur2,$user);
   redirect("Utilisateur/getProposition");
-
 }
 
 public function detailobjet(){
@@ -55,7 +62,7 @@ public function detailobjet(){
   // echo $data["liste"]["idobjet1"];
   $data["detailobjet1"]=$this->UtilisateurModel->detailobjet1($data["liste"]["idobjet1"]);
   $data["detailobjet2"]=$this->UtilisateurModel->detailobjet2($data["liste"]["idobjet2"]);
-  $this->UtilisateurModel->echange($data["liste"]["idutilisateur1"],$data["liste"]["idobjet1"],$data["liste"]["idutilisateur2"],$data["liste"]["idobjet2"]);
+  
   $data["page"]="Detailsproposition";
   $data["css"]="detailsproposition.css";
    $data["titre"]="Detail proposition";
@@ -179,9 +186,10 @@ public function detailobjet(){
     }
     public function getAllObjetUser(){
         $this->load->model("ObjetModel");
+        $user=$this->session->user;
         $data=array();
         $data['css']='listeObjets.css';
-        $data["liste"]=$this->ObjetModel->getObjects();
+        $data["liste"]=$this->ObjetModel->getObjects($user['idutilisateur']);
         $data["page"]="ListeObjets";
         $this->load->view('Template2',$data);
     }

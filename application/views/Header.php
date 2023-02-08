@@ -26,6 +26,14 @@
                     <a class="nav-link" href="<?php
                      echo site_url("Admin/insertCateg");?>">Ajouter une categorie</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="<?php
+                     echo site_url("Admin/disconnect");?>">Se deconnecter</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="<?php
+                     echo site_url("Statistique/NombreUtilisateur_Echange");?>">Statistiques</a>
+                    </li>
                 </ul>
                 </div>
             </div>
