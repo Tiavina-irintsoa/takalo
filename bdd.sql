@@ -53,6 +53,14 @@ insert into category values(null,'Chaussure');
 insert into category values(null,'Decor');
 insert into category values(null,'Cuisine');
 
+create table historique (
+    idObjet integer primary key auto_increment,
+    idUtilisateur integer,
+    dateechange timestamp,
+    foreign key(idobjet) references objet(idobjet),
+    foreign key (idutilisateur) references utilisateur(idutilisateur)
+);
+
 
 
 insert into utilisateur values('','Rakoto','Rakoto12');
