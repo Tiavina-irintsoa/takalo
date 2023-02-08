@@ -19,13 +19,13 @@
                     <label for="">
                         Votre nom:
                     </label>
-                    <input type="text" name="nom" id="">
+                    <input type="text" name="nom" id="" value="vero">
                 </div>
                 <div class="champ">
                     <label for="">
                         Votre mot de passe:
                     </label>
-                    <input type="password" name="mdp" id="">
+                    <input type="password" name="mdp" id="" value="vero">
                 </div>
                 <div id="submit">
                     <input type="submit" value="<?php echo $submitvalue; ?>">
