@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 
         public function detailobjet1($idobjet1){
-           $sql="select proposition.*,objet.description,objet.prix,photo.nomphoto from proposition join objet on proposition.idobjet1=objet.idobjet  join photo on photo.idobjet=objet.idobjet where proposition.idobjet1=%s";
+           $sql="select proposition.*,objet.description,objet.prix,photo.nomphoto,objet.idobjet from proposition join objet on proposition.idobjet1=objet.idobjet  join photo on photo.idobjet=objet.idobjet where proposition.idobjet1=%s";
            $sql=sprintf($sql,$this->db->escape($idobjet1));
            $query=$this->db->query($sql);
            $row=$query->row_array();
@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         public function detailobjet2($idobjet2){
-            $sql="select proposition.*,objet.description,objet.prix,photo.nomphoto from proposition join objet on proposition.idobjet2=objet.idobjet  join photo on photo.idobjet=objet.idobjet where proposition.idobjet2=%s;";
+            $sql="select proposition.*,objet.description,objet.prix,photo.nomphoto,objet.idobjet from proposition join objet on proposition.idobjet2=objet.idobjet  join photo on photo.idobjet=objet.idobjet where proposition.idobjet2=%s;";
             $sql=sprintf($sql,$this->db->escape($idobjet2));
             $query=$this->db->query($sql);
             $row=$query->row_array();

@@ -27,12 +27,25 @@
 
           </div>
       <?php  }
-      else{  ?>
+      else{  
+        if($isproposedbyme==false){ ?>
           <a href="<?php echo site_url("Utilisateur/choisir").'?owner='.$liste['idutilisateur'].'&objet='.$liste['idobjet'];?>">
               <div>
                 Proposer un echange
               </div>
           </a>
-    <?php  } ?>
+      <?php  }
+      else{ ?>
+        <div>
+          Vous avez deja proposer cet objet.
+        </div>
+    <?php  }
+      }
+        ?>
+        <a href="<?php
+        echo site_url("Objet/historique").'?id='.$liste['idobjet'] ; ?>">
+          Voir l'historique      
+        </a>
+          
 </div>
 </div>

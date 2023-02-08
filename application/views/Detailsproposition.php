@@ -19,9 +19,8 @@
   </div>
 
   <div id="button">
-    <a href="<?php echo site_url("Utilisateur/Accepter");?>?id=<?php echo $detailobjet1["idProposition"];?>"><button>accepter</button></a>
-    <a href="<?php echo site_url("Utilisateur/Refuser");?>?id=<?php echo $detailobjet1["idProposition"];?>"><button>Refuser</button></a>
-    
+    <a href="<?php echo site_url("Utilisateur/Accepter");?>?id=<?php echo $detailobjet1["idProposition"];?>&demandeur=<?php echo $liste['idutilisateur1']; ?>&objet2=<?php echo $detailobjet2['idobjet']; ?>&objet1=<?php echo $detailobjet1['idobjet'];?>"><button>accepter</button></a>
+    <a href="<?php echo site_url("Utilisateur/Refuser");?>?id=<?php echo $detailobjet1["idProposition"];?>"><button>Refuser</button></a> 
   </div>
 
 </div>

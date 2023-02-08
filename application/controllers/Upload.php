@@ -28,7 +28,9 @@ class Upload extends SessionUtilisateur{
             $prix=$this->input->post('prix');
             $idcategory=$this->input->post('idcategory');
             $user=$this->session->user;
-            $this->ObjetModel->addObjet($nom,$descri,$image,$prix,$idcategory,$user['idutilisateur']);
+            $idobjet=$this->ObjetModel->addObjet($nom,$descri,$image,$prix,$idcategory,$user['idutilisateur']);
+            $this->load->model('HistoriqueModel');
+            $this->HistoriqueModel->insertHistorique($idobjet,$user['idutilisateur']);
             redirect("Utilisateur/addobjet");
         }
 

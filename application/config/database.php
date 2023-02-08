@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sql105.epizy.com',
-	'username' => 'epiz_33508219',
-	'password' => '34fOPHOVwE',
-	'database' => 'epiz_33508219_takalo',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'takalo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +94,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+

@@ -42,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $sql="insert into photo values(null,%s,%s)";
             $sql=sprintf($sql,$this->db->escape($row['last_insert_id()']),$this->db->escape($image));
             $this->db->query($sql);
+            return $row['last_insert_id()'];
         }
     } 
 ?>

@@ -41,6 +41,11 @@
                     </a>
                     </li>
                     <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="<?php echo site_url("Recherche/listecategory");?>">
+                        Recherche un objet
+                    </a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="<?php echo site_url("Utilisateur/disconnect");?>">
                         Se deconnecter
                     </a>

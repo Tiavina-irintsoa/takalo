@@ -14,8 +14,8 @@ class Utilisateur extends SessionUtilisateur{
         $data["titre"]="Detail Objet";
         $data['user']=$this->session->user;
         $data['isproposedbyme']=$this->DetailModel->isProposedByMe($data['user']['idutilisateur'],$this->input->get('id'),$data['liste']['idutilisateur']);
-        var_dump($data);
-        // $this->load->view('Template2',$data);
+        // var_dump($data);
+        $this->load->view('Template2',$data);
     }
     public function disconnect(){
       $this->session->unset_userdata('user');
@@ -24,9 +24,19 @@ class Utilisateur extends SessionUtilisateur{
     public function Accepter(){
       
       $this->load->model("UtilisateurModel");
-      $this->UtilisateurModel->echange($data["liste"]["idutilisateur1"],$data["liste"]["idobjet1"],$data["liste"]["idutilisateur2"],$data["liste"]["idobjet2"]);
-      $data=array();
-      $this->UtilisateurModel->Accepter($this->input->get('id'));
+      $this->load->model("HistoriqueModel");
+
+      $idproposition=$this->input->get('id');
+      $user=$this->session->user;
+      $userid=$user['idutilisateur'];
+      $demandeur=$this->input->get('demandeur');
+      $objet1=$this->input->get('objet1');
+      $objet2=$this->input->get('objet2');
+
+      $this->UtilisateurModel->Accepter($idproposition);
+      $this->UtilisateurModel->echange($demandeur,$objet1,$userid,$objet2);
+      $this->HistoriqueModel->insertHistorique($objet1,$demandeur);
+      $this->HistoriqueModel->insertHistorique($objet2,$userid);
       redirect("Utilisateur/getProposition");
   }
 
@@ -37,20 +47,6 @@ class Utilisateur extends SessionUtilisateur{
       $this->UtilisateurModel->Refuser($this->input->get('id'));
      redirect("Utilisateur/getProposition");
 
-}
-
-public function echange(){
-  $this->load->model("UtilisateurModel");
-  $this->load->model("HistoriqueModel");
-  $utilisateur1=$this->input->get('idutilisateur1');
-  $utilisateur2=$this->input->get('idutilisateur2');
-  $objet1=$this->input->get('idobjet1');
-  $objet2=$this->input->get('idobjet2');
-  $this->HistoriqueModel->insertHistorique($objet1,$utilisateur1);
-  $this->HistoriqueModel->insertHistorique($objet2,$utilisateur2);
-  $data=array();
-  $this->UtilisateurModel->echange($utilisateur1,$objet1,$utilisateur2,$user);
-  redirect("Utilisateur/getProposition");
 }
 
 public function detailobjet(){

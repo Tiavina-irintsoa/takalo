@@ -3,15 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DetailModel extends CI_Model{
     public function isProposedByMe($iduser,$idobjet,$idowner){
-        $sql="select * from proposition where idutilisateur1=%s and idutilisateur2=%s and idobjet2=%s and etat=0";
+        $sql="select count(*) as c from proposition where idutilisateur1=%s and idutilisateur2=%s and idobjet2=%s and etat=0";
         $sql=sprintf($sql,$this->db->escape($iduser),$this->db->escape($idowner),$this->db->escape($idobjet));
         // echo $sql;
         $query=$this->db->query($sql);
-        echo count($query)."count";
-        if(count($query)==0){
-            return 0;
+        $row=$query->row_array();
+        $count=$row['c'];
+        if($count==0){
+            return false;
         }
-        return 1;
+        return true;
     }
     public function DetailObjets($id){
         $sql="select utilisateur.nom as username,objet.*,category.nom as nomcategory from objet join category on category.idcategory=objet.idcategory join utilisateur on utilisateur.idutilisateur=objet.idutilisateur where objet.idobjet=%s";
