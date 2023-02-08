@@ -24,6 +24,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $sql=sprintf($sql,$this->db->escape($id));
             $this->db->query($sql);
         }
+        
+        public function getPrixProche($id,$pourcentage,$iduser){
+            $reference=$this->getPrix($id);
+            $sql="select objet.*,utilisateur.* from objet join utilisateur on objet.idutilisateur=utilisateur.idutilisateur where prix >= (select prix*(1-%d/100) from objet where idobjet=%s) and prix <= (select prix*(1+%d/100) from objet where idobjet=%s) and objet.idutilisateur!=%s";
+            $sql=sprintf($sql,$pourcentage,$id,$pourcentage,$id,$iduser);
+
+            $query=$this->db->query($sql);
+            $result=array();
+            foreach($query->result_array() as $row){
+                $row['ecart']=100*(($row['prix']-$reference)/$reference);
+                $row['nomphoto']=$this->getPhotoCouverture($row['idobjet']);
+                array_push($result,$row);
+            }
+            return $result;
+        }
+        public function getPrix($id){
+            $sql="select prix from objet where idobjet=%s";
+            $sql=sprintf($sql,$this->db->escape($id));
+            $query=$this->db->query($sql);
+            $result=$query->row_array();
+            return $result['prix'];
+        }
         public function getObjetbyId($id){
             $sql="select * from objet where idobjet=%s";
             $sql=sprintf($sql,$this->db->escape($id));

@@ -117,6 +117,7 @@ public function detailobjet(){
       $data["css"]="listeObjets";
       $data["action"]=site_url("Utilisateur/insertUtilisateur");
       $date["page"]="Login";
+      $data['titre']="Liste d'objets";
       $date["submitvalue"]="s'inscrire";
       $this->load->view('Template2',$data);
     }
@@ -176,6 +177,7 @@ public function detailobjet(){
       $data["liste"]=$this->UtilisateurModel->getObjects($user['idutilisateur']);
       $data["page"]="ListeObjets";
       $data['css']="listeObjets.css";
+      $data['titre']="Liste d'objets";
       $this->load->view('Template2',$data);
     }
     public function getAllObjetUser(){
@@ -185,6 +187,7 @@ public function detailobjet(){
         $data['css']='listeObjets.css';
         $data["liste"]=$this->ObjetModel->getObjects($user['idutilisateur']);
         $data["page"]="ListeObjets";
+        $data['titre']="Liste d'objets";
         $this->load->view('Template2',$data);
     }
       
