@@ -19,7 +19,7 @@
                         <div id="photo" style="background-image: url('<?php echo base_url().'assets/img/'.$photo; ?>')">
                         </div>
                         <div id="description">
-                            <?php echo $objet['description']; ?>
+                            <?php echo $objet['description']; ?>, estime a <?php echo $objet['prix']; ?>
                         </div>
                     </div>
                 </a>
