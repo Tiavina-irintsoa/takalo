@@ -43,7 +43,7 @@ create table proposition(
     foreign key (idobjet2) references objet(idobjet)
 );
 create table historique (
-    idObjet integer primary key auto_increment,
+    idObjet integer,
     idUtilisateur integer,
     dateechange timestamp,
     foreign key(idobjet) references objet(idobjet),

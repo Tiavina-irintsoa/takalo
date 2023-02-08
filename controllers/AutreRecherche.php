@@ -9,8 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $this->load->model("RechercheModel");
         $this->load->model("UtilisateurModel");
         $data=array();
-        $user=$this->session->user;
-        $data['active']=$user['idutilisateur'];
         $data["liste"]=$this->RechercheModel->Rechercher($this->input->get("description"),$this->input->get("id"));
         $data["page"]="ListeObjets";
         $data["css"]="listeObjets.css";

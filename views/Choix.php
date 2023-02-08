@@ -1,16 +1,16 @@
 <div id="content">
-<div id="title">
-            <h1>
-                Choisir une contrepartie
-            </h1>
 
-        </div>
 <?php
 
     foreach($liste as $objet){ 
         $image=$objet['nomphoto'];
         ?>
-        
+        <div id="title">
+            <h1>
+                Choisir une contrepartie
+            </h1>
+
+        </div>
         <div id="objet">
             <div id="img" style="background-image:url('<?php echo base_url(); ?>assets/img/<?php echo $image; ?>');">
 
